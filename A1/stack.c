@@ -89,12 +89,16 @@ void duplicate(){
 }
 
 void swapPos(){
-	if(pointer>0){
+	if(pointer>=0){
 	int first=stack[pointer];
 	int second =stack[pointer-1];
-	
-	stack[pointer]=second;
 	stack[pointer-1]=first;
+	push();
+	stack[pointer]=second;
+	
+	
+	
+	
 	}else{
 		TFT_gotoxy(INPUT_POS); 
 		TFT_puts("Underflow");
