@@ -6,8 +6,6 @@
 #include "calc.h"
 
 #define SWISS30B 6
-#define STACK_POS 1,5
-#define INPUT_POS 1,1
 
 int incounter=-1;
 char input[30];
@@ -36,7 +34,7 @@ void run(){
 	Init_TI_Board();
 	TFT_Init();
 	Make_Touch_Pad();
-	TFT_set_window(SWISS30B,1,1,30,6);
+	TFT_set_window(SWISS30B,1,1,XPIXEL,YPIXEL);
 	TFT_puts("Warte auf Eingabe..");
 
 	while(1){

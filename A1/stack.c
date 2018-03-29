@@ -48,14 +48,14 @@ int pop(){
 
 void printFirst(){
 	char out[100];
-	TFT_gotoxy(STACK_POS); 
+	TFT_gotoxy(CURR_STACK_POS); 
 	sprintf(out, "Current Stack: \n\r%d\n\r", getCurrentStack());
 	TFT_puts(out);
 }
 
 void printStack(){
 	char out1[100];
-	TFT_gotoxy(STACK_POS); 
+	TFT_gotoxy(COMP_STACK_POS); 
 	TFT_puts("Complete Stack:\n\r");
 	for(int i=0;i<=STACK_SIZE-1;++i){
 		sprintf(out1, "%d ", stack[i]);

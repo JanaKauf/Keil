@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\basis3.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\basis3.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Mar 29 09:38:38 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Mar 29 11:10:28 2018
 <BR><P>
 <H3>Maximum Stack Usage =        368 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -502,6 +502,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFT_send_data
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;div
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;info
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;swapPos
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;push
@@ -533,6 +534,7 @@ Global Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;div
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;info
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;swapPos
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;push
@@ -699,10 +701,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
 </UL>
 
-<P><STRONG><a name="[6e]"></a>div</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, calc.o(i.div))
+<P><STRONG><a name="[6e]"></a>div</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, calc.o(i.div))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = div &rArr; push &rArr; TFT_gotoxy &rArr; TFT_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFT_puts
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFT_gotoxy
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setStack
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;push
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pop
@@ -812,7 +816,7 @@ Global Symbols
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;duplicate
 </UL>
 
-<P><STRONG><a name="[72]"></a>run</STRONG> (Thumb, 478 bytes, Stack size 8 bytes, run.o(i.run))
+<P><STRONG><a name="[72]"></a>run</STRONG> (Thumb, 482 bytes, Stack size 8 bytes, run.o(i.run))
 <BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = run &rArr; Get_Touch_Pad_Input &rArr; TFT_get_data &rArr; TFT_get_dat &rArr; Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sub
