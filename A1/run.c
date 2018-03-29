@@ -7,20 +7,19 @@
 
 #define SWISS30B 6
 
-int incounter=-1;
+int incounter=0;
 char input[30];
+
 void info(char eingabe){
-	if(incounter == sizeof input-1 || incounter <0 || eingabe == 's'){
-		for(int i = 0; i <= sizeof input-1;i++){
-			input[i]=' ';
+	if(incounter == 30){
+		for(int i=0;i<=sizeof input-1;i++){
+			input[i]=NULL;
 		}
-		TFT_gotoxy(INPUT_POS);
-		TFT_puts("Eingabe: ");
-		TFT_gotoxy(sizeof ("Eingabe: "),1);
-		TFT_puts(input);
-		++incounter;
-		info(eingabe);
-	} else{
+		TFT_cls();
+		incounter=0;
+	}
+		TFT_cls();
+		printFirst();
 		TFT_gotoxy(INPUT_POS);
 		TFT_puts("Eingabe: ");
 		TFT_gotoxy(sizeof ("Eingabe: "),1);
@@ -28,21 +27,19 @@ void info(char eingabe){
 		TFT_puts(input);
 		++incounter;
 	}
-	}
 
 void run(){
 	Init_TI_Board();
 	TFT_Init();
 	Make_Touch_Pad();
-	TFT_set_window(SWISS30B,1,1,XPIXEL,YPIXEL);
-	TFT_puts("Warte auf Eingabe..");
+	TFT_set_window(SWISS30B,1,1,XPIXEL,4);
+	TFT_puts("Eingabe:");
 
 	while(1){
 		char eingabe = Get_Touch_Pad_Input();
 		
 		switch(eingabe){
 			case '0': addDigit(eingabe-'0'); 
-			TFT_gotoxy(1,3); 
 			info(eingabe); break;
 			case '1': addDigit(eingabe-'0'); 
 			info(eingabe); break;
@@ -72,19 +69,18 @@ void run(){
 			info(eingabe); break;
 			case 'e': push(); 
 			info(eingabe); break;
-			case 'c': clear(); 
-			printStack(); info(' '); break;
-			case 's': info(eingabe); break;
+			case 'c': clear(); info('c');
+			printStack();  break;
 			case 'r': swapPos(); 
 			printStack(); info(eingabe); break;
 			case 'd': duplicate(); 
 			printStack(); info(eingabe); break;
 			case ' ': push(); 
-			info('_'); printStack(); break;
-			case 'p': printFirst(); 
-			info(eingabe); break;
-			case 'f': printStack(); 
-			info(eingabe); break;
+			info(' '); printStack(); break;
+			case 'p': info(eingabe);
+			printFirst();	break;
+			case 'f': info(eingabe);
+			printStack(); break;
 			default: continue;
 		}
 	}

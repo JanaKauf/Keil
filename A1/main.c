@@ -40,21 +40,6 @@
   */
   
 
-int auswahl=0;
-
-void calculate(int auswahl){
-	switch(auswahl){
-		case 1: add();
-		break;
-		case 2: sub();
-		break;
-		case 3: mul();
-		break;
-		case 4: div();
-	
-}
-}
-
 int main(){
 	 run();
 }

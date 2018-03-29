@@ -854,10 +854,10 @@ ARM Macro Assembler    Page 14
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\objects\startup_stm32f4xx.d -o.\objects\startup_stm32f4xx.o -
-IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\Inc\ST
-\STM32F4xx --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predef
-ine="__UVISION_VERSION SETA 523" --list=.\listings\startup_stm32f4xx.lst TI_BRD
-_LIB\TI-C_Board\startup_stm32f4xx.s
+IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\ST
+\STM32F4xx --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 
+524" --list=.\listings\startup_stm32f4xx.lst TI_BRD_LIB\TI-C_Board\startup_stm3
+2f4xx.s
 
 
 
@@ -1951,4 +1951,4 @@ Symbol: __main
       At line 182 in file TI_BRD_LIB\TI-C_Board\startup_stm32f4xx.s
 Comment: __main used once
 2 symbols
-445 symbols in table
+444 symbols in table

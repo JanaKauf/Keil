@@ -28,13 +28,13 @@ void mul(){
 
 void div(){
 	if(getCurrentStack()!=0){
-		TFT_gotoxy(STATUS_POS);
+		TFT_gotoxy(INPUT_POS);
 		
 		val=pop()/getCurrentStack();
 		setStack(val);
 		push();
 	} else{
-		TFT_gotoxy(STATUS_POS);
+		TFT_gotoxy(INPUT_POS);
 		TFT_puts("Status:");
 		
 //		char time[5];

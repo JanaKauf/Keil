@@ -22,6 +22,7 @@ int getPointer(){
 
 void setStack(float value){
 	stack[pointer]=value;
+	printStack();
 }
 
 void push(){
@@ -32,6 +33,7 @@ void push(){
 			TFT_gotoxy(INPUT_POS); 
 			TFT_puts("Overflow");
 		}
+		printStack();
 }
 
 int pop(){
@@ -43,39 +45,47 @@ int pop(){
 	TFT_gotoxy(INPUT_POS); 
 	TFT_puts("Underflow");
 	}
+	printStack();
 	return spVal;
 }
 
 void printFirst(){
 	char out[100];
-	TFT_gotoxy(CURR_STACK_POS); 
-	sprintf(out, "Current Stack: \n\r%d\n\r", getCurrentStack());
+	TFT_gotoxy(CURR_STACK); 
+	TFT_puts("Curr. Stack:");
+	sprintf(out, " %d", getCurrentStack());
+	TFT_gotoxy(sizeof("Curr. Stack:"),2); 
 	TFT_puts(out);
 }
 
 void printStack(){
+	
 	char out1[100];
-	TFT_gotoxy(COMP_STACK_POS); 
-	TFT_puts("Complete Stack:\n\r");
-	for(int i=0;i<=STACK_SIZE-1;++i){
+	TFT_gotoxy(COMP_STACK);
+	TFT_puts("Stack: ");
+	TFT_gotoxy(sizeof("Stack: "),3); 
+	for(int i=0;i<=STACK_SIZE-1;i++){
 		sprintf(out1, "%d ", stack[i]);
 		TFT_puts(out1);
 	}
-	
+
+
 }
 
+
 void clear(){
-	for(int i=0;i<=STACK_SIZE-1;++i){
+	for(int i=0;i<=STACK_SIZE-1;i++){
 	stack[i]=0;
 	}
 	pointer=0;
-	
+	printStack();
 }
 
 void duplicate(){
 	int stcopy = stack[pointer-1];
 	stack[pointer]=stcopy;
 	push();
+	printStack();
 }
 
 void swapPos(){
@@ -87,6 +97,7 @@ void swapPos(){
 	stack[pointer-1]=first;
 	}else{
 		TFT_gotoxy(INPUT_POS); 
-		TFT_puts("Underflow\n\r");
+		TFT_puts("Underflow");
 	}
+	printStack();
 }
