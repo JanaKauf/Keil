@@ -55,13 +55,8 @@ void calculate(int auswahl){
 }
 }
 
-int main()
- {
-
-	
-	 
-	run();
-	
+int main(){
+	 run();
 }
 // EOF
 

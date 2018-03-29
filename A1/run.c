@@ -5,22 +5,39 @@
 #include "stack.h"
 #include "calc.h"
 
-int incounter=0;
-char input[20];
+#define SWISS30B 6
+#define STACK_POS 1,5
+#define INPUT_POS 1,1
+
+int incounter=-1;
+char input[30];
 void info(char eingabe){
-	TFT_gotoxy(1,1);
-	TFT_puts("Eingabe: ");
-	TFT_gotoxy(sizeof ("Eingabe: "),1);
-	input[incounter]=eingabe;
-	TFT_puts(input);
-	incounter++;
+	if(incounter == sizeof input-1 || incounter <0 || eingabe == 's'){
+		for(int i = 0; i <= sizeof input-1;i++){
+			input[i]=' ';
+		}
+		TFT_gotoxy(INPUT_POS);
+		TFT_puts("Eingabe: ");
+		TFT_gotoxy(sizeof ("Eingabe: "),1);
+		TFT_puts(input);
+		++incounter;
+		info(eingabe);
+	} else{
+		TFT_gotoxy(INPUT_POS);
+		TFT_puts("Eingabe: ");
+		TFT_gotoxy(sizeof ("Eingabe: "),1);
+		input[incounter]=eingabe;
+		TFT_puts(input);
+		++incounter;
+	}
 	}
 
 void run(){
 	Init_TI_Board();
 	TFT_Init();
 	Make_Touch_Pad();
-	TFT_puts("Bereit.");
+	TFT_set_window(SWISS30B,1,1,30,6);
+	TFT_puts("Warte auf Eingabe..");
 
 	while(1){
 		char eingabe = Get_Touch_Pad_Input();
@@ -58,15 +75,14 @@ void run(){
 			case 'e': push(); 
 			info(eingabe); break;
 			case 'c': clear(); 
-			printStack(); info(eingabe); break;
-			case 's': addDigit(eingabe); 
-			info(eingabe); break;
+			printStack(); info(' '); break;
+			case 's': info(eingabe); break;
 			case 'r': swapPos(); 
 			printStack(); info(eingabe); break;
 			case 'd': duplicate(); 
 			printStack(); info(eingabe); break;
 			case ' ': push(); 
-			info('_'); break;
+			info('_'); printStack(); break;
 			case 'p': printFirst(); 
 			info(eingabe); break;
 			case 'f': printStack(); 

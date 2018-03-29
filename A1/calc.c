@@ -26,14 +26,10 @@ void mul(){
 }
 
 void div(){
-	if(pop()==0){
-	TFT_puts("Divison durch 0, was los");
 
-
-	}else{	
 	val=pop()/getCurrentStack();
 	setStack(val);
-	}
+	
 	push();
 }
 

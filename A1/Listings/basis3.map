@@ -112,8 +112,9 @@ Section Cross References
     stack.o(i.addDigit) refers to stack.o(.data) for pointer
     stack.o(i.clear) refers to stack.o(.bss) for stack
     stack.o(i.clear) refers to stack.o(.data) for pointer
-    stack.o(i.duplicate) refers to stack.o(.bss) for stack
+    stack.o(i.duplicate) refers to stack.o(i.push) for push
     stack.o(i.duplicate) refers to stack.o(.data) for pointer
+    stack.o(i.duplicate) refers to stack.o(.bss) for stack
     stack.o(i.getCurrentStack) refers to stack.o(.bss) for stack
     stack.o(i.getCurrentStack) refers to stack.o(.data) for pointer
     stack.o(i.getPointer) refers to stack.o(.data) for pointer
@@ -121,12 +122,10 @@ Section Cross References
     stack.o(i.pop) refers to tft.o(i.TFT_puts) for TFT_puts
     stack.o(i.pop) refers to stack.o(.bss) for stack
     stack.o(i.pop) refers to stack.o(.data) for pointer
-    stack.o(i.printFirst) refers to tft.o(i.TFT_cls) for TFT_cls
     stack.o(i.printFirst) refers to tft.o(i.TFT_gotoxy) for TFT_gotoxy
     stack.o(i.printFirst) refers to stack.o(i.getCurrentStack) for getCurrentStack
     stack.o(i.printFirst) refers to printf8.o(i.__0sprintf$8) for __2sprintf
     stack.o(i.printFirst) refers to tft.o(i.TFT_puts) for TFT_puts
-    stack.o(i.printStack) refers to tft.o(i.TFT_cls) for TFT_cls
     stack.o(i.printStack) refers to tft.o(i.TFT_gotoxy) for TFT_gotoxy
     stack.o(i.printStack) refers to tft.o(i.TFT_puts) for TFT_puts
     stack.o(i.printStack) refers to printf8.o(i.__0sprintf$8) for __2sprintf
@@ -138,6 +137,7 @@ Section Cross References
     stack.o(i.setStack) refers to ffixi.o(.text) for __aeabi_f2iz
     stack.o(i.setStack) refers to stack.o(.bss) for stack
     stack.o(i.setStack) refers to stack.o(.data) for pointer
+    stack.o(i.swapPos) refers to tft.o(i.TFT_gotoxy) for TFT_gotoxy
     stack.o(i.swapPos) refers to tft.o(i.TFT_puts) for TFT_puts
     stack.o(i.swapPos) refers to stack.o(.data) for pointer
     stack.o(i.swapPos) refers to stack.o(.bss) for stack
@@ -148,7 +148,6 @@ Section Cross References
     calc.o(i.add) refers to stack.o(i.push) for push
     calc.o(i.add) refers to calc.o(.data) for val
     calc.o(i.div) refers to stack.o(i.pop) for pop
-    calc.o(i.div) refers to tft.o(i.TFT_puts) for TFT_puts
     calc.o(i.div) refers to stack.o(i.getCurrentStack) for getCurrentStack
     calc.o(i.div) refers to fflti.o(.text) for __aeabi_i2f
     calc.o(i.div) refers to stack.o(i.setStack) for setStack
@@ -168,11 +167,12 @@ Section Cross References
     calc.o(i.sub) refers to calc.o(.data) for val
     run.o(i.info) refers to tft.o(i.TFT_gotoxy) for TFT_gotoxy
     run.o(i.info) refers to tft.o(i.TFT_puts) for TFT_puts
-    run.o(i.info) refers to run.o(.bss) for input
     run.o(i.info) refers to run.o(.data) for incounter
+    run.o(i.info) refers to run.o(.bss) for input
     run.o(i.run) refers to ti_lib.o(i.Init_TI_Board) for Init_TI_Board
     run.o(i.run) refers to tft.o(i.TFT_Init) for TFT_Init
     run.o(i.run) refers to keypad.o(i.Make_Touch_Pad) for Make_Touch_Pad
+    run.o(i.run) refers to tft.o(i.TFT_set_window) for TFT_set_window
     run.o(i.run) refers to tft.o(i.TFT_puts) for TFT_puts
     run.o(i.run) refers to keypad.o(i.Get_Touch_Pad_Input) for Get_Touch_Pad_Input
     run.o(i.run) refers to stack.o(i.addDigit) for addDigit
@@ -685,20 +685,20 @@ Image Symbol Table
     i.addDigit                               0x080018b8   Section        0  stack.o(i.addDigit)
     i.clear                                  0x080018e0   Section        0  stack.o(i.clear)
     i.div                                    0x08001904   Section        0  calc.o(i.div)
-    i.duplicate                              0x0800195c   Section        0  stack.o(i.duplicate)
-    i.fputc                                  0x0800197c   Section        0  retarget.o(i.fputc)
-    i.getCurrentStack                        0x08001994   Section        0  stack.o(i.getCurrentStack)
-    i.info                                   0x080019a8   Section        0  run.o(i.info)
-    i.main                                   0x080019f0   Section        0  main.o(i.main)
-    i.mul                                    0x080019fc   Section        0  calc.o(i.mul)
-    i.pop                                    0x08001a24   Section        0  stack.o(i.pop)
-    i.printFirst                             0x08001a78   Section        0  stack.o(i.printFirst)
-    i.printStack                             0x08001abc   Section        0  stack.o(i.printStack)
-    i.push                                   0x08001b20   Section        0  stack.o(i.push)
-    i.run                                    0x08001b68   Section        0  run.o(i.run)
-    i.setStack                               0x08001d40   Section        0  stack.o(i.setStack)
-    i.sub                                    0x08001d60   Section        0  calc.o(i.sub)
-    i.swapPos                                0x08001d8c   Section        0  stack.o(i.swapPos)
+    i.duplicate                              0x08001930   Section        0  stack.o(i.duplicate)
+    i.fputc                                  0x08001958   Section        0  retarget.o(i.fputc)
+    i.getCurrentStack                        0x08001970   Section        0  stack.o(i.getCurrentStack)
+    i.info                                   0x08001984   Section        0  run.o(i.info)
+    i.main                                   0x08001a1c   Section        0  main.o(i.main)
+    i.mul                                    0x08001a28   Section        0  calc.o(i.mul)
+    i.pop                                    0x08001a50   Section        0  stack.o(i.pop)
+    i.printFirst                             0x08001aa4   Section        0  stack.o(i.printFirst)
+    i.printStack                             0x08001ae4   Section        0  stack.o(i.printStack)
+    i.push                                   0x08001b34   Section        0  stack.o(i.push)
+    i.run                                    0x08001b7c   Section        0  run.o(i.run)
+    i.setStack                               0x08001d70   Section        0  stack.o(i.setStack)
+    i.sub                                    0x08001d90   Section        0  calc.o(i.sub)
+    i.swapPos                                0x08001dbc   Section        0  stack.o(i.swapPos)
     .data                                    0x20000000   Section        8  ti_lib.o(.data)
     TimingDelay                              0x20000000   Data           4  ti_lib.o(.data)
     uptime                                   0x20000004   Data           4  ti_lib.o(.data)
@@ -710,8 +710,8 @@ Image Symbol Table
     .bss                                     0x20000034   Section      262  tft.o(.bss)
     cmd                                      0x20000034   Data         262  tft.o(.bss)
     .bss                                     0x2000013c   Section       32  stack.o(.bss)
-    .bss                                     0x2000015c   Section       20  run.o(.bss)
-    STACK                                    0x20000170   Section     4096  startup_stm32f10x_md.o(STACK)
+    .bss                                     0x2000015c   Section       30  run.o(.bss)
+    STACK                                    0x20000180   Section     4096  startup_stm32f10x_md.o(STACK)
 
     Global Symbols
 
@@ -887,23 +887,23 @@ Image Symbol Table
     add                                      0x0800188d   Thumb Code    38  calc.o(i.add)
     addDigit                                 0x080018b9   Thumb Code    30  stack.o(i.addDigit)
     clear                                    0x080018e1   Thumb Code    26  stack.o(i.clear)
-    div                                      0x08001905   Thumb Code    54  calc.o(i.div)
-    duplicate                                0x0800195d   Thumb Code    24  stack.o(i.duplicate)
-    fputc                                    0x0800197d   Thumb Code    24  retarget.o(i.fputc)
-    getCurrentStack                          0x08001995   Thumb Code    12  stack.o(i.getCurrentStack)
-    info                                     0x080019a9   Thumb Code    50  run.o(i.info)
-    main                                     0x080019f1   Thumb Code    10  main.o(i.main)
-    mul                                      0x080019fd   Thumb Code    36  calc.o(i.mul)
-    pop                                      0x08001a25   Thumb Code    62  stack.o(i.pop)
-    printFirst                               0x08001a79   Thumb Code    42  stack.o(i.printFirst)
-    printStack                               0x08001abd   Thumb Code    66  stack.o(i.printStack)
-    push                                     0x08001b21   Thumb Code    50  stack.o(i.push)
-    run                                      0x08001b69   Thumb Code   464  run.o(i.run)
-    setStack                                 0x08001d41   Thumb Code    22  stack.o(i.setStack)
-    sub                                      0x08001d61   Thumb Code    38  calc.o(i.sub)
-    swapPos                                  0x08001d8d   Thumb Code    64  stack.o(i.swapPos)
-    Region$$Table$$Base                      0x08001de0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001e00   Number         0  anon$$obj.o(Region$$Table)
+    div                                      0x08001905   Thumb Code    40  calc.o(i.div)
+    duplicate                                0x08001931   Thumb Code    30  stack.o(i.duplicate)
+    fputc                                    0x08001959   Thumb Code    24  retarget.o(i.fputc)
+    getCurrentStack                          0x08001971   Thumb Code    12  stack.o(i.getCurrentStack)
+    info                                     0x08001985   Thumb Code   132  run.o(i.info)
+    main                                     0x08001a1d   Thumb Code    10  main.o(i.main)
+    mul                                      0x08001a29   Thumb Code    36  calc.o(i.mul)
+    pop                                      0x08001a51   Thumb Code    62  stack.o(i.pop)
+    printFirst                               0x08001aa5   Thumb Code    38  stack.o(i.printFirst)
+    printStack                               0x08001ae5   Thumb Code    52  stack.o(i.printStack)
+    push                                     0x08001b35   Thumb Code    50  stack.o(i.push)
+    run                                      0x08001b7d   Thumb Code   478  run.o(i.run)
+    setStack                                 0x08001d71   Thumb Code    22  stack.o(i.setStack)
+    sub                                      0x08001d91   Thumb Code    38  calc.o(i.sub)
+    swapPos                                  0x08001dbd   Thumb Code    72  stack.o(i.swapPos)
+    Region$$Table$$Base                      0x08001e18   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001e38   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000008   Data           4  system_stm32f10x.o(.data)
     AHBPrescTable                            0x2000000c   Data          16  system_stm32f10x.o(.data)
     __stdout                                 0x2000001c   Data           4  retarget.o(.data)
@@ -913,8 +913,8 @@ Image Symbol Table
     val                                      0x2000002c   Data           4  calc.o(.data)
     incounter                                0x20000030   Data           4  run.o(.data)
     stack                                    0x2000013c   Data          32  stack.o(.bss)
-    input                                    0x2000015c   Data          20  run.o(.bss)
-    __initial_sp                             0x20001170   Data           0  startup_stm32f10x_md.o(STACK)
+    input                                    0x2000015c   Data          30  run.o(.bss)
+    __initial_sp                             0x20001180   Data           0  startup_stm32f10x_md.o(STACK)
 
 
 
@@ -924,33 +924,33 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001e34, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001e6c, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00001e00, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00001e38, Max: 0x00040000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x000000ec   Data   RO          523    RESET               startup_stm32f10x_md.o
-    0x080000ec   0x00000000   Code   RO          865  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x080000ec   0x00000004   Code   RO         1143    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x080000f0   0x00000004   Code   RO         1146    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x080000f4   0x00000000   Code   RO         1148    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x080000f4   0x00000000   Code   RO         1150    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x080000f4   0x00000008   Code   RO         1151    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x080000fc   0x00000000   Code   RO         1153    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x080000fc   0x00000000   Code   RO         1155    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x080000fc   0x00000004   Code   RO         1144    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x080000ec   0x00000000   Code   RO          868  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x080000ec   0x00000004   Code   RO         1146    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x080000f0   0x00000004   Code   RO         1149    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x080000f4   0x00000000   Code   RO         1151    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x080000f4   0x00000000   Code   RO         1153    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x080000f4   0x00000008   Code   RO         1154    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x080000fc   0x00000000   Code   RO         1156    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x080000fc   0x00000000   Code   RO         1158    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x080000fc   0x00000004   Code   RO         1147    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x08000100   0x00000024   Code   RO          524    .text               startup_stm32f10x_md.o
-    0x08000124   0x0000000e   Code   RO          874    .text               mc_w.l(strlen.o)
-    0x08000132   0x00000012   Code   RO         1139    .text               mf_w.l(fflti.o)
-    0x08000144   0x00000032   Code   RO         1141    .text               mf_w.l(ffixi.o)
-    0x08000176   0x00000062   Code   RO         1159    .text               mc_w.l(uldiv.o)
-    0x080001d8   0x00000000   Code   RO         1161    .text               mc_w.l(iusefp.o)
-    0x080001d8   0x0000006e   Code   RO         1162    .text               mf_w.l(fepilogue.o)
+    0x08000124   0x0000000e   Code   RO          877    .text               mc_w.l(strlen.o)
+    0x08000132   0x00000012   Code   RO         1142    .text               mf_w.l(fflti.o)
+    0x08000144   0x00000032   Code   RO         1144    .text               mf_w.l(ffixi.o)
+    0x08000176   0x00000062   Code   RO         1162    .text               mc_w.l(uldiv.o)
+    0x080001d8   0x00000000   Code   RO         1164    .text               mc_w.l(iusefp.o)
+    0x080001d8   0x0000006e   Code   RO         1165    .text               mf_w.l(fepilogue.o)
     0x08000246   0x00000002   PAD
-    0x08000248   0x00000024   Code   RO         1174    .text               mc_w.l(init.o)
-    0x0800026c   0x0000001e   Code   RO         1176    .text               mc_w.l(llshl.o)
-    0x0800028a   0x00000020   Code   RO         1178    .text               mc_w.l(llushr.o)
+    0x08000248   0x00000024   Code   RO         1177    .text               mc_w.l(init.o)
+    0x0800026c   0x0000001e   Code   RO         1179    .text               mc_w.l(llshl.o)
+    0x0800028a   0x00000020   Code   RO         1181    .text               mc_w.l(llushr.o)
     0x080002aa   0x00000002   PAD
     0x080002ac   0x00000018   Code   RO          428    i.Delay             ti_lib.o
     0x080002c4   0x00000124   Code   RO           23    i.Get_Touch_Pad_Input  keypad.o
@@ -990,53 +990,54 @@ Memory Map of the image
     0x0800134a   0x00000048   Code   RO          110    i.TFT_touch_key_feedback  tft.o
     0x08001392   0x00000002   PAD
     0x08001394   0x00000024   Code   RO          431    i.TimingDelay_Decrement  ti_lib.o
-    0x080013b8   0x00000020   Code   RO         1085    i.__0printf$8       mc_w.l(printf8.o)
-    0x080013d8   0x00000028   Code   RO         1087    i.__0sprintf$8      mc_w.l(printf8.o)
-    0x08001400   0x0000000e   Code   RO         1186    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800140e   0x00000002   Code   RO         1187    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08001410   0x0000000e   Code   RO         1188    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x080013b8   0x00000020   Code   RO         1088    i.__0printf$8       mc_w.l(printf8.o)
+    0x080013d8   0x00000028   Code   RO         1090    i.__0sprintf$8      mc_w.l(printf8.o)
+    0x08001400   0x0000000e   Code   RO         1189    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800140e   0x00000002   Code   RO         1190    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08001410   0x0000000e   Code   RO         1191    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x0800141e   0x00000002   PAD
-    0x08001420   0x00000410   Code   RO         1092    i._printf_core      mc_w.l(printf8.o)
-    0x08001830   0x00000024   Code   RO         1093    i._printf_post_padding  mc_w.l(printf8.o)
-    0x08001854   0x0000002e   Code   RO         1094    i._printf_pre_padding  mc_w.l(printf8.o)
-    0x08001882   0x0000000a   Code   RO         1096    i._sputc            mc_w.l(printf8.o)
-    0x0800188c   0x0000002c   Code   RO          802    i.add               calc.o
-    0x080018b8   0x00000028   Code   RO          723    i.addDigit          stack.o
-    0x080018e0   0x00000024   Code   RO          724    i.clear             stack.o
-    0x08001904   0x00000058   Code   RO          803    i.div               calc.o
-    0x0800195c   0x00000020   Code   RO          725    i.duplicate         stack.o
-    0x0800197c   0x00000018   Code   RO          574    i.fputc             retarget.o
-    0x08001994   0x00000014   Code   RO          726    i.getCurrentStack   stack.o
-    0x080019a8   0x00000048   Code   RO          837    i.info              run.o
-    0x080019f0   0x0000000a   Code   RO          681    i.main              main.o
-    0x080019fa   0x00000002   PAD
-    0x080019fc   0x00000028   Code   RO          804    i.mul               calc.o
-    0x08001a24   0x00000054   Code   RO          728    i.pop               stack.o
-    0x08001a78   0x00000044   Code   RO          729    i.printFirst        stack.o
-    0x08001abc   0x00000064   Code   RO          730    i.printStack        stack.o
-    0x08001b20   0x00000048   Code   RO          731    i.push              stack.o
-    0x08001b68   0x000001d8   Code   RO          838    i.run               run.o
-    0x08001d40   0x00000020   Code   RO          732    i.setStack          stack.o
-    0x08001d60   0x0000002c   Code   RO          805    i.sub               calc.o
-    0x08001d8c   0x00000054   Code   RO          733    i.swapPos           stack.o
-    0x08001de0   0x00000020   Data   RO         1184    Region$$Table       anon$$obj.o
+    0x08001420   0x00000410   Code   RO         1095    i._printf_core      mc_w.l(printf8.o)
+    0x08001830   0x00000024   Code   RO         1096    i._printf_post_padding  mc_w.l(printf8.o)
+    0x08001854   0x0000002e   Code   RO         1097    i._printf_pre_padding  mc_w.l(printf8.o)
+    0x08001882   0x0000000a   Code   RO         1099    i._sputc            mc_w.l(printf8.o)
+    0x0800188c   0x0000002c   Code   RO          805    i.add               calc.o
+    0x080018b8   0x00000028   Code   RO          726    i.addDigit          stack.o
+    0x080018e0   0x00000024   Code   RO          727    i.clear             stack.o
+    0x08001904   0x0000002c   Code   RO          806    i.div               calc.o
+    0x08001930   0x00000028   Code   RO          728    i.duplicate         stack.o
+    0x08001958   0x00000018   Code   RO          574    i.fputc             retarget.o
+    0x08001970   0x00000014   Code   RO          729    i.getCurrentStack   stack.o
+    0x08001984   0x00000098   Code   RO          840    i.info              run.o
+    0x08001a1c   0x0000000a   Code   RO          681    i.main              main.o
+    0x08001a26   0x00000002   PAD
+    0x08001a28   0x00000028   Code   RO          807    i.mul               calc.o
+    0x08001a50   0x00000054   Code   RO          731    i.pop               stack.o
+    0x08001aa4   0x00000040   Code   RO          732    i.printFirst        stack.o
+    0x08001ae4   0x00000050   Code   RO          733    i.printStack        stack.o
+    0x08001b34   0x00000048   Code   RO          734    i.push              stack.o
+    0x08001b7c   0x000001f4   Code   RO          841    i.run               run.o
+    0x08001d70   0x00000020   Code   RO          735    i.setStack          stack.o
+    0x08001d90   0x0000002c   Code   RO          808    i.sub               calc.o
+    0x08001dbc   0x0000005c   Code   RO          736    i.swapPos           stack.o
+    0x08001e18   0x00000020   Data   RO         1187    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001170, Max: 0x0000c000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001180, Max: 0x0000c000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x00000008   Data   RW          433    .data               ti_lib.o
     0x20000008   0x00000014   Data   RW          478    .data               system_stm32f10x.o
     0x2000001c   0x0000000c   Data   RW          575    .data               retarget.o
-    0x20000028   0x00000004   Data   RW          735    .data               stack.o
-    0x2000002c   0x00000004   Data   RW          806    .data               calc.o
-    0x20000030   0x00000004   Data   RW          840    .data               run.o
+    0x20000028   0x00000004   Data   RW          738    .data               stack.o
+    0x2000002c   0x00000004   Data   RW          809    .data               calc.o
+    0x20000030   0x00000004   Data   RW          843    .data               run.o
     0x20000034   0x00000106   Zero   RW          111    .bss                tft.o
     0x2000013a   0x00000002   PAD
-    0x2000013c   0x00000020   Zero   RW          734    .bss                stack.o
-    0x2000015c   0x00000014   Zero   RW          839    .bss                run.o
-    0x20000170   0x00001000   Zero   RW          521    STACK               startup_stm32f10x_md.o
+    0x2000013c   0x00000020   Zero   RW          737    .bss                stack.o
+    0x2000015c   0x0000001e   Zero   RW          842    .bss                run.o
+    0x2000017a   0x00000006   PAD
+    0x20000180   0x00001000   Zero   RW          521    STACK               startup_stm32f10x_md.o
 
 
 ==============================================================================
@@ -1047,23 +1048,23 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
          0          0          0          0          0       4508   assert.o
-       216         50          0          4          0       1618   calc.o
+       172         20          0          4          0       1610   calc.o
       1808        142          0          0          0       1695   keypad.o
-        10          0          0          0          0        375   main.o
+        10          0          0          0          0        379   main.o
         24          0          0         12          0       2306   retarget.o
-       544         52          0          4         20       1767   run.o
+       652         64          0          4         30       1951   run.o
        184         24          0          0          0        949   serial.o
        228         42          0          0          0      23544   sim_board_io.o
-       568        170          0          4         32       4697   stack.o
+       560        166          0          4         32       4745   stack.o
         36          8        236          0       4096        792   startup_stm32f10x_md.o
        492         50          0         20          0     206521   system_stm32f10x.o
       1548         24          0          0        262      11881   tft.o
         98         12          0          8          0       2146   ti_lib.o
 
     ----------------------------------------------------------------------
-      5764        574        268         52       4412     262799   Object Totals
+      5820        552        268         52       4428     263027   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         8          0          0          0          2          0   (incl. Padding)
+         8          0          0          0          8          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1110,15 +1111,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      7412        650        268         52       4412     261003   Grand Totals
-      7412        650        268         52       4412     261003   ELF Image Totals
-      7412        650        268         52          0          0   ROM Totals
+      7468        628        268         52       4428     261231   Grand Totals
+      7468        628        268         52       4428     261231   ELF Image Totals
+      7468        628        268         52          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 7680 (   7.50kB)
-    Total RW  Size (RW Data + ZI Data)              4464 (   4.36kB)
-    Total ROM Size (Code + RO Data + RW Data)       7732 (   7.55kB)
+    Total RO  Size (Code + RO Data)                 7736 (   7.55kB)
+    Total RW  Size (RW Data + ZI Data)              4480 (   4.38kB)
+    Total ROM Size (Code + RO Data + RW Data)       7788 (   7.61kB)
 
 ==============================================================================
 

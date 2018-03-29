@@ -907,6 +907,11 @@
               <FileType>5</FileType>
               <FilePath>.\calc.h</FilePath>
             </File>
+            <File>
+              <FileName>run.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\run.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -1812,6 +1817,11 @@
               <FileType>5</FileType>
               <FilePath>.\calc.h</FilePath>
             </File>
+            <File>
+              <FileName>run.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\run.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -2649,6 +2659,11 @@
               <FileType>5</FileType>
               <FilePath>.\calc.h</FilePath>
             </File>
+            <File>
+              <FileName>run.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\run.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -3485,6 +3500,11 @@
               <FileName>calc.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\calc.h</FilePath>
+            </File>
+            <File>
+              <FileName>run.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\run.h</FilePath>
             </File>
           </Files>
         </Group>
