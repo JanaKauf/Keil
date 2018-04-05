@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\aufgabe01GS.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\aufgabe01GS.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Apr 04 14:11:27 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Apr 04 14:40:50 2018
 <BR><P>
 <H3>Maximum Stack Usage =        440 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -742,6 +742,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_TI_Board
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;div
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;take
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putOnStack
 </UL>
 
 <P><STRONG><a name="[b7]"></a>Empty</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stack.o(i.Empty))
@@ -939,6 +940,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;div
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;take
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putOnStack
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printTopStack
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printStack
 </UL>
@@ -969,6 +971,7 @@ Global Symbols
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;div
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;take
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putOnStack
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printTopStack
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printStack
 </UL>
@@ -1001,6 +1004,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Make_Touch_Pad
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;div
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;take
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putOnStack
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printTopStack
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printStack
 </UL>
@@ -1193,11 +1197,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
 </UL>
 
-<P><STRONG><a name="[b9]"></a>duplicate</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, functions.o(i.duplicate))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = duplicate &rArr; stackTop
+<P><STRONG><a name="[b9]"></a>duplicate</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, stack.o(i.duplicate))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = duplicate &rArr; putOnStack &rArr; TFT_gotoxy &rArr; TFT_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stackTop
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putOnStack
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putOnStack
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
@@ -1265,17 +1268,21 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Full
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Empty
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;duplicate
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;duplicate
 </UL>
 
-<P><STRONG><a name="[bb]"></a>putOnStack</STRONG> (Thumb, 32 bytes, Stack size 4 bytes, stack.o(i.putOnStack))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = putOnStack
+<P><STRONG><a name="[bb]"></a>putOnStack</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, stack.o(i.putOnStack))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = putOnStack &rArr; TFT_gotoxy &rArr; TFT_send_data
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Full
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFT_puts
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFT_gotoxy
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFT_set_font_color
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Full
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;duplicate
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;duplicate
 </UL>
 
 <P><STRONG><a name="[b5]"></a>replaceOnStack</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stack.o(i.replaceOnStack))
@@ -1300,7 +1307,6 @@ Global Symbols
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;screen
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sub
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mul
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;duplicate
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;div
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;swapPosition
@@ -1308,6 +1314,7 @@ Global Symbols
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printTopStack
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printStack
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;duplicate
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearStack
 </UL>
 <BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1329,7 +1336,6 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sub
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mul
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;duplicate
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;div
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;take

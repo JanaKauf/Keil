@@ -16,6 +16,7 @@ extern void printStack (void);
 extern void printTopStack (void);
 extern void replaceOnStack (int data);
 extern void swapPosition (void);
+extern void duplicate (void);
 
 
 

@@ -105,7 +105,13 @@ putOnStack () {
 	if (!Full()) {
 		top++;
 		stack[top] = 0;
-	}	
+	} else {
+		TFT_gotoxy(1,4);
+		TFT_set_font_color(RED);
+		TFT_puts("Stack Overflow");
+		TFT_set_font_color(MINT);
+		Delay(5000);
+	}
 }
 
 void
@@ -118,6 +124,13 @@ swapPosition (){
 	int value = stackTop();
 	stack[top] = stack[top - 1];
 	stack[top - 1] = value;
+}
+
+void
+duplicate (){
+	int value = stack[top - 1];
+	put(value);
+	putOnStack();
 }
 
 void

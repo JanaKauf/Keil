@@ -33,24 +33,18 @@ void mul(){
 }
 
 void div(){
-	if(stackTop() != 0 ){	
+	if(stackTop() != 0){	
 		v1 = take();
 		v2 = stackTop();
 
 		replaceOnStack(v2/v1);
 
-	} else{
+	} else {
 		TFT_gotoxy(1,4);
 		TFT_set_font_color(RED);
-		TFT_puts("Division durch 0 oder Stack Underflow");
+		TFT_puts("Division durch 0");
 		TFT_set_font_color(MINT);
 		Delay(5000);
 	}
 }
 
-void
-duplicate () {
-	put(stackTop());
-	putOnStack();
-	
-}
