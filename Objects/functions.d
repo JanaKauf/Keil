@@ -1,0 +1,15 @@
+.\objects\functions.o: functions.c
+.\objects\functions.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\functions.o: functions.h
+.\objects\functions.o: stack.h
+.\objects\functions.o: TI_BRD_LIB\Library\tft.h
+.\objects\functions.o: TI_BRD_LIB\Library\TI_Lib.h
+.\objects\functions.o: TI_BRD_LIB\Library\TI_memory_map.h
+.\objects\functions.o: .\TI_BRD_LIB\TI-C_Board\stm32f4xx.h
+.\objects\functions.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4.h
+.\objects\functions.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\functions.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+.\objects\functions.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+.\objects\functions.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm4_simd.h
+.\objects\functions.o: C:\Keil_v5\ARM\Inc\ST\STM32F4xx\system_stm32f4xx.h
+.\objects\functions.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
