@@ -10,6 +10,8 @@
       <TargetName>TI-Board</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F417ZG</Device>
@@ -147,7 +149,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>7</TargetSelection>
+          <TargetSelection>1</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -872,9 +874,14 @@
               <FilePath>.\functions.c</FilePath>
             </File>
             <File>
-              <FileName>run.c</FileName>
+              <FileName>screen.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\run.c</FilePath>
+              <FilePath>.\screen.c</FilePath>
+            </File>
+            <File>
+              <FileName>input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\input.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -990,9 +997,14 @@
               <FilePath>.\functions.h</FilePath>
             </File>
             <File>
-              <FileName>run.h</FileName>
+              <FileName>screen.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\run.h</FilePath>
+              <FilePath>.\screen.h</FilePath>
+            </File>
+            <File>
+              <FileName>input.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\input.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1002,6 +1014,7 @@
       <TargetName>TI-Board Assembler</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F417ZG</Device>
@@ -1894,9 +1907,14 @@
               <FilePath>.\functions.c</FilePath>
             </File>
             <File>
-              <FileName>run.c</FileName>
+              <FileName>screen.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\run.c</FilePath>
+              <FilePath>.\screen.c</FilePath>
+            </File>
+            <File>
+              <FileName>input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\input.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1944,9 +1962,14 @@
               <FilePath>.\functions.h</FilePath>
             </File>
             <File>
-              <FileName>run.h</FileName>
+              <FileName>screen.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\run.h</FilePath>
+              <FilePath>.\screen.h</FilePath>
+            </File>
+            <File>
+              <FileName>input.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\input.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1956,7 +1979,8 @@
       <TargetName>Simulation</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
+      <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F103ZC</Device>
@@ -2751,9 +2775,14 @@
               <FilePath>.\functions.c</FilePath>
             </File>
             <File>
-              <FileName>run.c</FileName>
+              <FileName>screen.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\run.c</FilePath>
+              <FilePath>.\screen.c</FilePath>
+            </File>
+            <File>
+              <FileName>input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\input.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2869,9 +2898,14 @@
               <FilePath>.\functions.h</FilePath>
             </File>
             <File>
-              <FileName>run.h</FileName>
+              <FileName>screen.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\run.h</FilePath>
+              <FilePath>.\screen.h</FilePath>
+            </File>
+            <File>
+              <FileName>input.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\input.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2881,6 +2915,7 @@
       <TargetName>Simulation Assembler</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F103ZC</Device>
@@ -3705,9 +3740,14 @@
               <FilePath>.\functions.c</FilePath>
             </File>
             <File>
-              <FileName>run.c</FileName>
+              <FileName>screen.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\run.c</FilePath>
+              <FilePath>.\screen.c</FilePath>
+            </File>
+            <File>
+              <FileName>input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\input.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3755,9 +3795,14 @@
               <FilePath>.\functions.h</FilePath>
             </File>
             <File>
-              <FileName>run.h</FileName>
+              <FileName>screen.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\run.h</FilePath>
+              <FilePath>.\screen.h</FilePath>
+            </File>
+            <File>
+              <FileName>input.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\input.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,35 +1,21 @@
 /**
-  ******************************************************************************
-  * @file    	main.c 
-  * @author  	Alfred Lohmann
-  *        	  HAW-Hamburg
-  *          	Labor für technische Informatik
-  *          	Berliner Tor  7
-  *          	D-20099 Hamburg
-  * @version V1.0
-  * @date    23.05.2013
-  * @brief   Main program body
-  ******************************************************************************
+	***************************************************************************
+  * @file    	main.c 														
+  * @author  	Janaina Kaufmann #2326875, Sahin Tekes	#2288847			
+  *        	  	HAW-Hamburg													
+  *          	Labor für technische Informatik								
+  *          	Berliner Tor  7												
+  *          	D-20099 Hamburg												
+  * @version 	V1.0														*
+  * @date    	04.04.2018													*
+  * @brief   	Main program body of the Reverse Polish notation calculator	*
+  ***************************************************************************
   */
-
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
-
-//#include "TI_Lib.h"
-//#include "tft.h"
-#include "run.h"
-
-//--- For GPIOs -----------------------------
-//Include instead of "stm32f4xx.h" for
-//compatibility between Simulation and Board
-//#include "TI_memory_map.h"
-
-//--- For Touch Keypad ----------------------
-//#include "keypad.h"
-
-//--- For Timer -----------------------------
-//#include "timer.c"
+#include "screen.h"
+#include "input.h"
 
 /**
   * @brief  Main program
@@ -37,7 +23,9 @@
   */
 int
 main (void) {
-	run();
-
+	initScreen();
+	
+	getInput();
+	
+	return 0;
 }
-// EOF

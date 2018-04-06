@@ -1,43 +1,33 @@
 #include <stdio.h>
+#include <errno.h>
 #include "functions.h"
 #include "stack.h"
 #include "tft.h"
 #include "TI_Lib.h"
-#include <errno.h>
+#include "input.h"
 
 int v1 = 0;
 int v2 = 0;
 
 void add(){
-	v1 = take();
-	v2 = stackTop();
-	
-	
-	printf("v1 = %d, v2=%d", v1, v2);
-	
-	replaceOnStack(v1 + v2);
+	setBuffer(pop() + getBuffer());
+	push();
 }
 
 void sub(){
-	v1 = take();
-	v2 = stackTop();
-	
-	replaceOnStack(v1 - v2);
+	setBuffer(pop() - getBuffer());
+	push();
 }
 
 void mul(){
-	v1 = take();
-	v2 = stackTop();
-	
-	replaceOnStack(v1 * v2);
+	setBuffer(pop() * getBuffer());
+	push();
 }
 
 void div(){
 	if(stackTop() != 0){	
-		v1 = take();
-		v2 = stackTop();
-
-		replaceOnStack(v2/v1);
+		setBuffer(getBuffer() / pop());
+		push();
 
 	} else {
 		TFT_gotoxy(1,4);

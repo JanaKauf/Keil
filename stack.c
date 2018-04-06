@@ -1,8 +1,12 @@
 #include<stdio.h>
+#include<errno.h>
 #include "stack.h"
 #include "TFT.h"
 #include "TI_Lib.h"
-#include<errno.h>
+#include "input.h"
+
+#define TRUE 				1
+#define FALSE 			0
 
 int stack[MAXSIZE];
 int top = -1;
@@ -45,7 +49,6 @@ stackTop(){
 	if (!Empty()) {
 		return stack[top];
 	}
-	
 	return FALSE;
 }
 
@@ -55,7 +58,7 @@ stackTop(){
   * @retval data from the top of the stack
   */
 int
-take(){
+pop(){
 	int data = 0;
 	
 	if (!Empty()) {
@@ -74,37 +77,12 @@ take(){
 	return FALSE; 
 }
 
-/**
-  * @brief  Puts data on top of the Stack
-  * @param  data that will be put on the stack
-  * @retval none
-  */
 void
-put(int data){
-	if(Empty()){
-		top++;
-	}
-	if(!Full()) {
-		stack[top] = (stack[top] * 10) + data;
-	}
-}
-
-void
-clearStack (){
-	int i;
-	if (!Empty()) {
-		for (i = 0; i < MAXSIZE; i++) {
-			stack[i] = 0;
-		}
-		top = 0;
-	}
-}
-
-void
-putOnStack () {
+push () {
 	if (!Full()) {
 		top++;
-		stack[top] = 0;
+		stack[top] = getBuffer();
+		setBuffer(0);
 	} else {
 		TFT_gotoxy(1,4);
 		TFT_set_font_color(RED);
@@ -115,8 +93,26 @@ putOnStack () {
 }
 
 void
-replaceOnStack (int data) {
-	stack[top] = data;
+clearStack (){
+	if (!Empty()) {
+		int i;
+		for (i = 0; i < MAXSIZE; i++) {
+			stack[i] = 0;
+		}
+		top = -1;
+		setBuffer(0);
+	}
+}
+
+void
+copyStack (int * cStack, int * tStack) {
+	int i;
+	
+	for (i = 0; i < MAXSIZE; i++) {
+		*(cStack++) = stack[i];
+	}
+	
+	*tStack = top;
 }
 
 void
@@ -128,37 +124,7 @@ swapPosition (){
 
 void
 duplicate (){
-	int value = stack[top - 1];
-	put(value);
-	putOnStack();
-}
-
-void
-printStack () {
-	int i;
-	char out[100];
-	
-	TFT_gotoxy(1, 3);
-	TFT_set_font_color(GREEN);
-	TFT_puts("Stack: ");
-	TFT_gotoxy(sizeof("Stack: "), 3);
-	
-	for (i = 0; i <= MAXSIZE - 1; i++){
-		printf("%d ", stack[i]);
-		sprintf(out, "%d ", stack[i]);
-		TFT_puts(out);
-	}
-	TFT_set_font_color(MINT);
-}
-
-void
-printTopStack () {
-	char out[100];
-	TFT_gotoxy(1,2);
-	TFT_set_font_color(BLUE);
-	TFT_puts("Curr. Stack:");
-	TFT_gotoxy(sizeof("Curr. Stack:"), 2); 
-	sprintf(out, " %d", stackTop());
-	TFT_puts(out);
-	TFT_set_font_color(MINT);
+	int value = stackTop();
+	setBuffer(value);
+	push();
 }
