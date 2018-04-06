@@ -32,7 +32,7 @@ Empty() {
   */
 unsigned int
 Full() {
-	if (top == MAXSIZE) {
+	if (top == MAXSIZE - 1) {
 		return TRUE;
 	}
 	
@@ -68,33 +68,26 @@ pop() {
 		return data;
 		
 	} else {
-		TFT_gotoxy(1,4);
-		TFT_set_font_color(RED);
-		TFT_puts("Stack underflow");
-		TFT_set_font_color(MINT);
-		Delay(5000);
-	}
-	
-	return FALSE; 
+		return -3;
+	} 
 }
 
-void
+int
 push() {
 	if (!Full() ) {
 		top++;
 		stack[top] = getBuffer();
 		setBuffer(0);
 		
+		return TRUE;
+		
 	} else {
-		TFT_gotoxy(1,4);
-		TFT_set_font_color(RED);
-		TFT_puts("Stack Overflow");
-		TFT_set_font_color(MINT);
-		Delay(5000);
+		
+		return -2;
 	}
 }
 
-void
+int
 clearStack() {
 	if (!Empty() ) {
 		int i;
@@ -105,6 +98,12 @@ clearStack() {
 		
 		top = -1;
 		setBuffer(0);
+		
+		return TRUE;
+		
+	} else {
+		return -1;
+		
 	}
 }
 

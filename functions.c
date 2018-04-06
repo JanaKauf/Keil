@@ -5,33 +5,53 @@
 #include "tft.h"
 #include "TI_Lib.h"
 #include "input.h"
+#include "screen.h"
+
+int value;
 
 void add() {
-	setBuffer(pop() + getBuffer() );
-	push();
+	value = pop();
+	
+	if (value > 0) {
+		setBuffer(value + getBuffer() );
+		push();
+	} else {
+		errorMsg(value);
+	}
 }
 
 void sub() {
-	setBuffer(pop() - getBuffer() );
-	push();
+	value = pop();
+	
+	if (value > 0) {
+		setBuffer(value - getBuffer() );
+		push();
+	} else {
+		errorMsg(value);
+	}
 }
 
 void mul(){
-	setBuffer(pop() * getBuffer() );
-	push();
+	value = pop();
+	
+	if (value > 0) {
+		setBuffer(value * getBuffer() );
+		push();
+	} else {
+		errorMsg(value);
+	}
 }
 
 void div() {
-	if(stackTop() != 0){	
+	if(pop() == -3) {
+		errorMsg(-3);
+	
+	}	else if(stackTop() != 0){	
 		setBuffer(getBuffer() / pop());
 		push();
 
 	} else {
-		TFT_gotoxy(1,4);
-		TFT_set_font_color(RED);
-		TFT_puts("Division durch 0");
-		TFT_set_font_color(MINT);
-		Delay(5000);
+		errorMsg(-4);
 	}
 }
 

@@ -1,9 +1,12 @@
 #include <stdio.h>
+#include <errno.h>
 #include "screen.h"
 #include "stack.h"
 #include "TI_Lib.h"
 #include "keypad.h"
 #include "tft.h"
+
+#define DELAYTIME		1000
 
 int inputCounter = 0;
 char allInput[30];
@@ -93,4 +96,44 @@ initScreen() {
 		Make_Touch_Pad();
 		TFT_set_window(GENEVA10, 1, 1, XPIXEL, 4);
 		TFT_puts("Eingabe:");
+}
+
+void
+errorMsg(int error) {
+	switch	(error){
+			case -1:
+				TFT_gotoxy(1,4);
+				TFT_set_font_color(RED);
+				TFT_puts("Stack is Empty!");
+				TFT_set_font_color(MINT);
+				Delay(DELAYTIME);
+				break;
+			
+			case -2:
+				TFT_gotoxy(1,4);
+				TFT_set_font_color(RED);
+				TFT_puts("Stack Overflow");
+				TFT_set_font_color(MINT);
+				Delay(DELAYTIME);
+				break;
+			
+			case -3:
+				TFT_gotoxy(1,4);
+				TFT_set_font_color(RED);
+				TFT_puts("Stack Underflow");
+				TFT_set_font_color(MINT);
+				Delay(DELAYTIME);
+				break;
+			
+			case -4:
+				TFT_gotoxy(1,4);
+				TFT_set_font_color(RED);
+				TFT_puts("Division with 0");
+				TFT_set_font_color(MINT);
+				Delay(DELAYTIME);
+				break;
+			
+			default:
+				break;
+	}
 }

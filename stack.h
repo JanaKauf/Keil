@@ -5,8 +5,8 @@
 
 extern int stackTop(void);
 extern int pop(void);
-extern void clearStack(void);
-extern void push (void);
+extern int clearStack(void);
+extern int push (void);
 extern void copyStack (int * cStack, int * tStack);
 extern void swapPosition (void);
 extern void duplicate (void);

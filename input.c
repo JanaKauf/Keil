@@ -102,7 +102,7 @@ getInput() {
 				break;
 			
 			case 'c':
-				clearStack();
+				errorMsg(clearStack() );
 				break;
 			
 			case 'd':
@@ -115,7 +115,7 @@ getInput() {
 			
 			case ' ':
 				eingabe = '_';
-				push();
+				errorMsg(push() );
 				break;
 			
 			case 'e':
