@@ -22,7 +22,7 @@
   * @param  None
   */
 int
-main (void) {
+main(void) {
 	initScreen();
 	
 	getInput();

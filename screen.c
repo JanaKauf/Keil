@@ -9,7 +9,7 @@ int inputCounter = 0;
 char allInput[30];
 
 void
-printStack(){
+printStack() {
 	int st[MAXSIZE];
 	int t;
 	int i;
@@ -23,22 +23,25 @@ printStack(){
 	TFT_puts("Stack: ");
 	TFT_gotoxy(sizeof("Stack: "), 3);
 	
-	for (i = 0; i <= MAXSIZE - 1; i++){
+	for (i = 0; i <= MAXSIZE - 1; i++) {
 		printf("%d ", st[i]);
 		sprintf(out, "%d ", st[i]);
 		TFT_puts(out);
 	}
+	
 	TFT_set_font_color(MINT);
 }
 
 void
-printTopStack (){
+printTopStack() {
 	char out[100];
+	
 	TFT_gotoxy(1,2);
 	TFT_set_font_color(BLUE);
 	TFT_puts("Curr. Stack:");
-	TFT_gotoxy(sizeof("Curr. Stack:"), 2); 
-	sprintf(out, " %d", stackTop());
+	TFT_gotoxy(sizeof("Curr. Stack:") , 2); 
+	
+	sprintf(out, " %d", stackTop() );
 	TFT_puts(out);
 	TFT_set_font_color(MINT);
 }
@@ -49,18 +52,19 @@ printTopStack (){
   * @retval none
   */
 void
-output (char input){
+output(char input) {
 	int i;
 	
-	if (input == 'e'){
+	if (input == 'e') {
 		inputCounter = 30;
 		TFT_cls();
 	}
 	
-	if (inputCounter == 30){
-		for (i = 0; i <= sizeof(allInput) - 1 ; i++){
+	if (inputCounter == 30) {
+		for (i = 0; i <= (sizeof(allInput) - 1) ; i++) {
 			allInput[i] = NULL;
 		}
+		
 		inputCounter = 0;
 	}
 	
@@ -75,7 +79,7 @@ output (char input){
 	TFT_puts(allInput);
 	inputCounter++;
 	
-	if (input == 'f'){
+	if (input == 'f') {
 		printStack();
 	} else if (input == 'p') {
 		printTopStack();
@@ -83,7 +87,7 @@ output (char input){
 }
 
 void
-initScreen (){
+initScreen() {
 		Init_TI_Board();
 		TFT_Init();
 		Make_Touch_Pad();

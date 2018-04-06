@@ -6,25 +6,22 @@
 #include "TI_Lib.h"
 #include "input.h"
 
-int v1 = 0;
-int v2 = 0;
-
-void add(){
-	setBuffer(pop() + getBuffer());
+void add() {
+	setBuffer(pop() + getBuffer() );
 	push();
 }
 
-void sub(){
-	setBuffer(pop() - getBuffer());
+void sub() {
+	setBuffer(pop() - getBuffer() );
 	push();
 }
 
 void mul(){
-	setBuffer(pop() * getBuffer());
+	setBuffer(pop() * getBuffer() );
 	push();
 }
 
-void div(){
+void div() {
 	if(stackTop() != 0){	
 		setBuffer(getBuffer() / pop());
 		push();

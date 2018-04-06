@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<errno.h>
+#include <stdio.h>
+#include <errno.h>
 #include "stack.h"
 #include "TFT.h"
 #include "TI_Lib.h"
@@ -17,7 +17,7 @@ int top = -1;
   * @retval 1 true or 0 false 
   */
 unsigned int
-Empty(){
+Empty() {
 	if (top < 0) {
 		return TRUE;
 	}
@@ -31,7 +31,7 @@ Empty(){
   * @retval 1 true or 0 false 
   */
 unsigned int
-Full(){
+Full() {
 	if (top == MAXSIZE) {
 		return TRUE;
 	}
@@ -45,8 +45,8 @@ Full(){
   * @retval top stack value
   */
 int
-stackTop(){
-	if (!Empty()) {
+stackTop() {
+	if (!Empty() ) {
 		return stack[top];
 	}
 	return FALSE;
@@ -58,14 +58,15 @@ stackTop(){
   * @retval data from the top of the stack
   */
 int
-pop(){
+pop() {
 	int data = 0;
 	
-	if (!Empty()) {
+	if (!Empty() ) {
 		data = stackTop();
 		stack[top] = 0;
 		top--;
 		return data;
+		
 	} else {
 		TFT_gotoxy(1,4);
 		TFT_set_font_color(RED);
@@ -78,11 +79,12 @@ pop(){
 }
 
 void
-push () {
-	if (!Full()) {
+push() {
+	if (!Full() ) {
 		top++;
 		stack[top] = getBuffer();
 		setBuffer(0);
+		
 	} else {
 		TFT_gotoxy(1,4);
 		TFT_set_font_color(RED);
@@ -93,19 +95,21 @@ push () {
 }
 
 void
-clearStack (){
-	if (!Empty()) {
+clearStack() {
+	if (!Empty() ) {
 		int i;
+		
 		for (i = 0; i < MAXSIZE; i++) {
 			stack[i] = 0;
 		}
+		
 		top = -1;
 		setBuffer(0);
 	}
 }
 
 void
-copyStack (int * cStack, int * tStack) {
+copyStack(int * cStack, int * tStack) {
 	int i;
 	
 	for (i = 0; i < MAXSIZE; i++) {
@@ -116,14 +120,14 @@ copyStack (int * cStack, int * tStack) {
 }
 
 void
-swapPosition (){
+swapPosition() {
 	int value = stackTop();
 	stack[top] = stack[top - 1];
 	stack[top - 1] = value;
 }
 
 void
-duplicate (){
+duplicate() {
 	int value = stackTop();
 	setBuffer(value);
 	push();
