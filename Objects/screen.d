@@ -1,0 +1,14 @@
+.\objects\screen.o: screen.c
+.\objects\screen.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\screen.o: screen.h
+.\objects\screen.o: stack.h
+.\objects\screen.o: .\TI_BRD_LIB\Library\TI_Lib.h
+.\objects\screen.o: .\TI_BRD_LIB\Library\TI_memory_map.h
+.\objects\screen.o: .\TI_BRD_LIB\Simulated_Board\stm32f10x.h
+.\objects\screen.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm3.h
+.\objects\screen.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\screen.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+.\objects\screen.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+.\objects\screen.o: C:\Keil_v5\ARM\Inc\ST\STM32F10x\system_stm32f10x.h
+.\objects\screen.o: .\TI_BRD_LIB\Library\keypad.h
+.\objects\screen.o: .\TI_BRD_LIB\Library\tft.h
