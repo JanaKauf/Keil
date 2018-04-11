@@ -78,6 +78,7 @@ push() {
 		top++;
 		stack[top] = getBuffer();
 		setBuffer(0);
+		setSet(TRUE);
 		
 		return TRUE;
 		

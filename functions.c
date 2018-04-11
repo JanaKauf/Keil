@@ -10,10 +10,13 @@
 int value;
 
 void add() {
+	if(!getSet()) {
+		push();
+	}
 	value = pop();
 	
 	if (value > 0) {
-		setBuffer(value + getBuffer() );
+		setBuffer(value + pop() );
 		push();
 	} else {
 		errorMsg(value);
@@ -21,10 +24,13 @@ void add() {
 }
 
 void sub() {
+	if(!getSet()) {
+		push();
+	}
 	value = pop();
 	
 	if (value > 0) {
-		setBuffer(value - getBuffer() );
+		setBuffer(pop() - value);
 		push();
 	} else {
 		errorMsg(value);
@@ -32,10 +38,13 @@ void sub() {
 }
 
 void mul(){
+	if(!getSet()) {
+		push();
+	}
 	value = pop();
 	
 	if (value > 0) {
-		setBuffer(value * getBuffer() );
+		setBuffer(value * pop() );
 		push();
 	} else {
 		errorMsg(value);
@@ -43,11 +52,17 @@ void mul(){
 }
 
 void div() {
-	if(pop() == -3) {
+	if(!getSet()) {
+		push();
+	}
+	value = pop();
+	printf("%d", value);
+	
+	if(value == -3) {
 		errorMsg(-3);
 	
-	}	else if(stackTop() != 0){	
-		setBuffer(getBuffer() / pop());
+	}	else if(value != 0){	
+		setBuffer(pop() / value);
 		push();
 
 	} else {

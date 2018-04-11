@@ -10,6 +10,7 @@
 #define FALSE 			0
 
 int buffer = 0;
+unsigned int set = FALSE;
 
 /**
   * @brief  Puts data on top of the Stack
@@ -18,6 +19,7 @@ int buffer = 0;
   */
 void
 put(int data) {
+	setSet(FALSE);
 	buffer = (buffer * 10) + data;
 }
 
@@ -28,7 +30,18 @@ getBuffer() {
 
 void
 setBuffer(int value) {
+	setSet(FALSE);
 	buffer = value;
+}
+
+unsigned int
+getSet() {
+	return set;
+}
+
+void
+setSet(unsigned int value) {
+	set = value;
 }
 
 void
