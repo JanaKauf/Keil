@@ -241,7 +241,7 @@ I (.\TI_BRD_LIB\Library\tft.h)(0x5AD5F623)
 I (.\TI_BRD_LIB\Library\timer.h)(0x5AD5F623)
 I (defines.h)(0x5AD5FFBC)
 I (steps.h)(0x5AD6021C)
-I (winkel.h)(0x5AD70955)
+I (winkel.h)(0x5AD70ADA)
 F (.\steps.c)(0x5AD602C8)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\TI_BRD_LIB\Library -I .\TI_BRD_LIB\Simulated_Board-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="523" -DSIMULATION -DSTM32F10X_HD-o .\objects\steps.o --omf_browse .\objects\steps.crf --depend .\objects\steps.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F65B18)
 I (.\TI_BRD_LIB\Library\TI_Lib.h)(0x5AD5F623)
@@ -253,7 +253,7 @@ I (C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h)(0x559D31EA)
 I (C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h)(0x559D31EA)
 I (C:\Keil_v5\ARM\Inc\ST\STM32F10x\system_stm32f10x.h)(0x559D2740)
 I (defines.h)(0x5AD5FFBC)
-F (.\winkel.c)(0x5AD709FA)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\TI_BRD_LIB\Library -I .\TI_BRD_LIB\Simulated_Board-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="523" -DSIMULATION -DSTM32F10X_HD-o .\objects\winkel.o --omf_browse .\objects\winkel.crf --depend .\objects\winkel.d)
+F (.\winkel.c)(0x5AD70AFB)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\TI_BRD_LIB\Library -I .\TI_BRD_LIB\Simulated_Board-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="523" -DSIMULATION -DSTM32F10X_HD-o .\objects\winkel.o --omf_browse .\objects\winkel.crf --depend .\objects\winkel.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F65B18)
 I (.\TI_BRD_LIB\Library\TI_Lib.h)(0x5AD5F623)
 I (.\TI_BRD_LIB\Library\TI_memory_map.h)(0x5AD5F623)
@@ -264,11 +264,11 @@ I (C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h)(0x559D31EA)
 I (C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h)(0x559D31EA)
 I (C:\Keil_v5\ARM\Inc\ST\STM32F10x\system_stm32f10x.h)(0x559D2740)
 I (defines.h)(0x5AD5FFBC)
-I (winkel.h)(0x5AD70955)
+I (winkel.h)(0x5AD70ADA)
 F (.\main.s)(0x00000000)()
 F (.\TI_BRD_LIB\Library\keypad.h)(0x5AD5F623)()
 F (.\TI_BRD_LIB\Library\tft.h)(0x5AD5F623)()
 F (.\TI_BRD_LIB\Library\timer.h)(0x5AD5F623)()
 F (.\defines.h)(0x5AD5FFBC)()
 F (.\steps.h)(0x5AD6021C)()
-F (.\winkel.h)(0x5AD70955)()
+F (.\winkel.h)(0x5AD70ADA)()
