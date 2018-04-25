@@ -28,35 +28,27 @@ uint8_t newstate = 0x0;
 	
 typedef
 enum{
-	A_P =0,
+	A_P = 0,
 	B_P = 1,
 	C_P = 2,
 	D_P = 3
-}State_Type;
+} State_Type;
 
-
-void a_p(uint8_t, uint8_t *);
-void b_p(uint8_t, uint8_t *);
-void c_p(uint8_t, uint8_t *);
-void d_p(uint8_t, uint8_t *);
-
-typedef void (*state_table) (uint8_t, uint8_t *);
-
-state_table s_t;
+void (*state_table[]) () = {a_phase, b_phase, c_phase, d_phase};
 
 void
-a_p(uint8_t state, uint8_t * newstate){
-	if (*newstate == 1) {
+a_phase(){
+	if (newstate == B_P) {
 		steps++;
 		gradSecCounter++;
-		*newstate = state;
+		newstate = state;
 		winkelcounter++;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(7);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(6);
-	} else if (*newstate == 2) {
+	} else if (newstate == C_P) {
 		steps--;
 		gradSecCounter++;
-		*newstate = state;
+		newstate = state;
 		winkelcounter--;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(6);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(7);
@@ -66,18 +58,18 @@ a_p(uint8_t state, uint8_t * newstate){
 }
 
 void
-b_p(uint8_t state, uint8_t * newstate){
-	if (*newstate == 3) {
+b_phase(){
+	if (newstate == D_P) {
 		steps++;
 		gradSecCounter++;
-		*newstate = state;
+		newstate = state;
 		winkelcounter++;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(7);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(6);
-	} else if (*newstate == 0) {
+	} else if (newstate == A_P) {
 		steps--;
 		gradSecCounter++;
-		*newstate = state;
+		newstate = state;
 		winkelcounter--;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(6);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(7);
@@ -87,18 +79,18 @@ b_p(uint8_t state, uint8_t * newstate){
 }
 
 void
-c_p(uint8_t state, uint8_t * newstate){
-	if (*newstate == 0) {
+c_phase(){
+	if (newstate == A_P) {
 		steps++;
 		gradSecCounter++;
-		*newstate = state;
+		newstate = state;
 		winkelcounter++;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(7);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(6);
-	} else if (*newstate == 3) {
+	} else if (newstate == D_P) {
 		steps--;
 		gradSecCounter++;
-		*newstate = state;
+		newstate = state;
 		winkelcounter--;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(6);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(7);
@@ -108,23 +100,26 @@ c_p(uint8_t state, uint8_t * newstate){
 }
 
 void
-d_p(uint8_t state, uint8_t * newstate){
-	if (*newstate == 2) {
+d_phase(){
+	if (newstate == C_P) {
 		steps++;
 		gradSecCounter++;
-		*newstate = state;
+		newstate = state;
 		winkelcounter++;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(7);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(6);
-	} else if (*newstate == 1) {
+		
+	} else if (newstate == B_P) {
 		steps--;
 		gradSecCounter++;
-		*newstate = state;
+		newstate = state;
 		winkelcounter--;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(6);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(7);
+		
 	} else {
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(5);
+		
 	}
 }
 
@@ -161,20 +156,7 @@ encode () {
 		TFT_puts(out);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(0);
 		
-		if (state == A_P) {
-			s_t = a_p;
-		
-		} else if(state == B_P) {
-			s_t = b_p;
-		
-		} else if(state == C_P) {
-			s_t = c_p;
-		
-		} else if(state == D_P) {
-			s_t = d_p;
-		}
-		
-		s_t(state, &newstate);
+		state_table[state]();
 		
 		winkel = (int)winkelcounter/3.333;
 		printLEDsteps();
