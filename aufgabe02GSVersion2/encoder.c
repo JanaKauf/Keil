@@ -1,17 +1,18 @@
 #include <stdio.h>
+#include <stdint.h> // int8_t, …
+#include <string.h> // Zeichenketten-Verarbeitung
+#include "stm32f10x.h"
 #include "TI_Lib.h"
 #include "tft.h"
-#include "timer.h"
 #include "defines.h"
 #include "encoder.h"
-#include "timer.h"
 
 //counts steps to a max. of 255, resets to 0 if max reached
 uint8_t steps = 0;
 
 //
 int winkel = 0;
-int winkelcounter;
+int winkelcounter = 0;
 
 int time = 0;
 int gradSecCounter = 0;
@@ -21,29 +22,25 @@ double gradSec = 0;
 uint8_t oldstate = 0x3;
 
 //char array for output on TI-TFT
-	char out[12];
+char out[12];
 	
-typedef
-enum{
-	A_P = 0,
-	B_P = 2,
-	C_P = 3,
-	D_P = 1
-} State_Type;
-
 State_Type curr_state;
 
+//array of function pointers, order: 00, 01, 10, 11
 void (*state_table[]) () = {a_phase, d_phase, b_phase, c_phase};
 
+// steps for each phase
 void
 a_phase(){
+    //forwards
 	if (oldstate == D_P) {
 		steps++;
-		gradSecCounter++;
+		gradSecCounter++; 
 		oldstate = curr_state;
 		winkelcounter++;
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(7);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(6);
+    //backwards
 	} else if (oldstate == B_P) {
 		steps--;
 		gradSecCounter++;
@@ -122,12 +119,14 @@ d_phase(){
 	}
 }
 
+//binary representation of steps
 void
 printLEDsteps (){
 	GPIOG->BSRRH = 0xff00;
 	GPIOG->BSRRL = steps << 0x8;
 }
 
+//complete process
 void
 encode () {
 	curr_state = GPIOE->IDR & 0x3;
@@ -146,13 +145,11 @@ encode () {
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(5);
 	}
 	
-	printf("state %d\n", curr_state);
 	if (curr_state != oldstate) {
 		
 		GPIOG->BSRRL = BSRRL_MASK_PIN_I(0);
-		sprintf(out, "State: %d - Schritte: %d\n\rwinkel: %d\n\rGrad/sec:%.2f\n\r", curr_state, steps, winkel, gradSec);
+		sprintf(out, "State: %d - Schritte: %d\n\rWinkel: %d\n\rGrad/Sec:%.2f\n\r", curr_state, steps, winkel, gradSec);
 		TFT_cls();
-		TFT_gotoxy(1,1);
 		TFT_puts(out);
 		GPIOG->BSRRH = BSRRH_MASK_PIN_I(0);
 		
