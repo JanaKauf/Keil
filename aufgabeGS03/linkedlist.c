@@ -13,7 +13,9 @@ AddStudent (int p, char *Name, int MatrNr, int Etag, int Emon, int Ejahr, int B_
 	
 	NewStudent = (struct Student *) (malloc(sizeof(struct Student)));
 	if (NewStudent == NULL) {
+		errno = EDOM;
 		perror("Faild to allocate memory!!");
+		return;
 	}
 	
 	strcpy(NewStudent->Name, Name);
@@ -24,19 +26,12 @@ AddStudent (int p, char *Name, int MatrNr, int Etag, int Emon, int Ejahr, int B_
 	NewStudent->Bew_Pkt = B_P;
 	NewStudent->pBew = pBew;
 	
-	if (LIST == NULL) {
-		NewStudent->next = NULL;
-		LIST = NewStudent;
-		return;
-	}
-	
-	if (p == 0) {
+	if (p == 0 || LIST == NULL) {
 		NewStudent->next = LIST;
 		LIST = NewStudent;
 	
 	} else if (p == 1){
-		struct Student * curr = LIST;
-		while (curr->next != NULL) {
+		WHILENEXT(LIST, curr) {
 			curr = curr->next;
 		}
 		curr->next = NewStudent;
@@ -51,6 +46,7 @@ DelStudent(int MatrNr) {
 	struct Student *del = NULL;
 	
 	if (LIST == NULL) {
+		perror("List is empty!!");
 		return;
 	} else if (LIST->MatrNr == MatrNr){
 		del = LIST;
@@ -59,8 +55,7 @@ DelStudent(int MatrNr) {
 		return;
 	}
 	
-	struct Student * test = LIST;
-	while (test->next != NULL) {
+	WHILENEXT(LIST, test) {
 		if (test->next->MatrNr == MatrNr) {
 			break;
 		}
@@ -68,6 +63,7 @@ DelStudent(int MatrNr) {
 	}
 
 	if (test->next == NULL) {
+		errno = EOF;
 		perror("Nicht Vorhanden!!");
 		return;
 	}
@@ -81,8 +77,7 @@ DelStudent(int MatrNr) {
 void
 PrintStudents() {
 	printf("Printing...\n");
-	struct Student * curr = LIST;
-	while(curr != NULL){
+	WHILE(LIST, curr){
 		printf("| Name: %s MatrNr.: %d\
 			  \n| Einschreibung: %d/%d/%d\
 			  \n| Bew_Pkt.: %d\
@@ -98,8 +93,7 @@ PrintStudents() {
 void
 AddPkt(int MatrNr, int BewPkt) {
 	printf("Adding Pkt MatrNr: %d...\n", MatrNr);
-	struct Student* test = LIST;
-	while (test != NULL) {
+	WHILE(LIST, test) {
 		if (test->MatrNr == MatrNr) {
 			break;
 		}
@@ -112,19 +106,15 @@ AddPkt(int MatrNr, int BewPkt) {
 int
 BewStudent(char *pBew) {
 	printf("BewStudent...\n");
-	struct Student * bester = LIST;
+	int bestMatrNr = -1;
 
-	struct Student* curr = LIST;
-	while (curr != NULL) {
-		if (bester->Bew_Pkt < curr->Bew_Pkt) {
-			bester = curr;
+	WHILE(LIST, curr) {
+		if (curr->Bew_Pkt >= 1800) {
+			curr->pBew = pBew;
+			bestMatrNr = curr->MatrNr;
 		}
 		curr = curr->next;
 	}
-
-	if (bester->Bew_Pkt >= 1800) {
-		return bester->MatrNr;
-	}
 	
-	return -1;
+	return bestMatrNr;
 }
