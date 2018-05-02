@@ -34,9 +34,9 @@ int main(void)
 	PrintStudents();
 	AddStudent(1, "Tekes", 29348, 2, 1, 2012, 0, pBew[0]);
 	PrintStudents();
-	AddStudent(1, "Napier", 33094, 1, 3, 2003, 0, pBew[0]);
+	AddStudent(0, "Napier", 33094, 1, 3, 2003, 0, pBew[0]);
 	PrintStudents();
-	AddStudent(1, "Quinzel", 20008, 12, 2, 2006, 0, pBew[0]);
+	AddStudent(0, "Quinzel", 20008, 12, 2, 2006, 0, pBew[0]);
 	PrintStudents();
 	AddStudent(1, "Isley", 23000, 27, 5, 2007, 0, pBew[0]);
 	PrintStudents();
@@ -55,8 +55,15 @@ int main(void)
 	PrintStudents();
 	AddPkt(33033, 1800);
 	PrintStudents();
+	AddPkt(33033, 100);
+	PrintStudents();
+	AddPkt(19098, 300);
+	PrintStudents();
 	
-	BewStudent(pBew[2]);
+	setzeBew();
+	PrintStudents();
+	
+	delUnder100();
 	PrintStudents();
 	
 	DelStudent(23098);

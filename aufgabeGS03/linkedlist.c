@@ -13,8 +13,8 @@ AddStudent (int p, char *Name, int MatrNr, int Etag, int Emon, int Ejahr, int B_
 	
 	NewStudent = (struct Student *) (malloc(sizeof(struct Student)));
 	if (NewStudent == NULL) {
-		errno = EDOM;
-		perror("Faild to allocate memory!!");
+		errno = ENOMEM;
+		perror("Fail to allocate memory!!");
 		return;
 	}
 	
@@ -46,6 +46,7 @@ DelStudent(int MatrNr) {
 	struct Student *del = NULL;
 	
 	if (LIST == NULL) {
+		errno = ERANGE;
 		perror("List is empty!!");
 		return;
 	} else if (LIST->MatrNr == MatrNr){
@@ -63,7 +64,7 @@ DelStudent(int MatrNr) {
 	}
 
 	if (test->next == NULL) {
-		errno = EOF;
+		errno = EINVAL;
 		perror("Nicht Vorhanden!!");
 		return;
 	}
@@ -80,11 +81,9 @@ PrintStudents() {
 	WHILE(LIST, curr){
 		printf("| Name: %s MatrNr.: %d\
 			  \n| Einschreibung: %d/%d/%d\
-			  \n| Bew_Pkt.: %d\
-			  \n| pBew.: %s\n\n" , curr->Name, curr->MatrNr\
-												 , curr->Einschreibung.Tag, curr->Einschreibung.Monat, curr->Einschreibung.Jahr\
-												 , curr->Bew_Pkt\
-												 , curr->pBew);
+			  \n| Bew_Pkt.: %d pBew.: %s\n\n" , curr->Name, curr->MatrNr\
+																				, curr->Einschreibung.Tag, curr->Einschreibung.Monat, curr->Einschreibung.Jahr\
+																				, curr->Bew_Pkt, curr->pBew);
 		curr = curr->next;
 	}
 	printf("END\n\n");
@@ -106,15 +105,59 @@ AddPkt(int MatrNr, int BewPkt) {
 int
 BewStudent(char *pBew) {
 	printf("BewStudent...\n");
-	int bestMatrNr = -1;
+	struct Student * bester = LIST;
+	
+//	if (strcmp(pBew), "Mittel") {
+//	
+//	}
 
 	WHILE(LIST, curr) {
 		if (curr->Bew_Pkt >= 1800) {
 			curr->pBew = pBew;
-			bestMatrNr = curr->MatrNr;
+		}
+		if (curr->Bew_Pkt > bester->Bew_Pkt) {
+			bester = curr;
 		}
 		curr = curr->next;
 	}
 	
-	return bestMatrNr;
+	if (bester->Bew_Pkt > 1800){
+		return bester->MatrNr;
+	} else {
+		return -1;
+	}
+}
+
+void
+setzeBew () {
+	printf("setzeBew...\n");
+	if (LIST == NULL) {
+		return;
+	}
+	
+	WHILE(LIST, test) {
+		if (test->Bew_Pkt > 1800) {
+			test->pBew = "Ausgezeichnet";
+		} else if (test->Bew_Pkt < 100) {
+			test->pBew = "Mittel";
+		} else {
+			test->pBew = "Hoch";
+		}
+		test = test->next;
+	}
+}
+
+void
+delUnder100 () {
+	printf("delUnder100...\n");
+	if (LIST == NULL) {
+		return;
+	}
+	
+	WHILE(LIST, test) {
+		if (test->Bew_Pkt < 100) {
+			DelStudent(test->MatrNr);
+		}
+		test = test->next;
+	}
 }
