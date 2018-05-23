@@ -18,6 +18,7 @@
 
 #include "TI_Lib.h"
 #include "tft.h"
+#include "DS18B20.h"
 
 //--- For GPIOs -----------------------------
 //Include instead of "stm32f4xx.h" for
@@ -28,7 +29,7 @@
 //#include "keypad.h"
 
 //--- For Timer -----------------------------
-//#include "timer.c"
+#include "timer.c"
 
 /**
   * @brief  Main program
@@ -36,10 +37,11 @@
   */
 int main(void)
 {
-	
   Init_TI_Board();
 	
-	while(1){
+	OPEN_DRAIN;
+	
+	while(!reset()) {
 		
 	}
 

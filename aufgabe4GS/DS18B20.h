@@ -1,7 +1,7 @@
 #ifndef _DS18B20_H
 #define _DS18B20_H
 #include "TI_Lib.h"
-//#include "stm32f10x.h"
+#include "TI_memory_map.h"
 #include "stm32f4xx_gpio.h"
 #include "timer.h"
 
@@ -33,26 +33,27 @@ uint32_t time;
 #define	READ_PS		0xB4
 
 
-//Output PG0 send 0
-//#define Tx_DS18B20 GPIOG->MODER = (GPIOG->MODER & ~(3 << (0 *2))) | (GPIO_Mode_OUT << (0 * 2));
-#define Tx_DS18B20 GPIOG->BSRRH = (1 << 0);
+//Speed 50MHz
+#define SPEED GPIOG->OSPEEDR = (GPIOG->OSPEEDR & ~(3 << (0 * 2))) | (GPIO_Speed_50MHz << (0 * 2))
 
-//Input PG0 send 1
-//#define Rx_DS18B20 GPIOG->MODER = (GPIOG->MODER & ~(3 << (0 *2))) | (GPIO_Mode_IN << (0 * 2));
-#define Rx_DS18B20 GPIOG->BSRRL = (1 << 0);
+//Output PG0
+#define Tx_DS18B20 GPIOG->MODER = (GPIOG->MODER & ~(3 << (0 * 2))) | (GPIO_Mode_OUT << (0 * 2))
+//#define Tx_DS18B20 GPIOG->BSRRH = (1 << 0);
+
+//Input PG0
+#define Rx_DS18B20 GPIOG->MODER = (GPIOG->MODER & ~(3 << (0 * 2))) | (GPIO_Mode_IN << (0 * 2))
+//#define Rx_DS18B20 GPIOG->BSRRL = (1 << 0);
 
 
 //Open drain PG0
-#define OPEN_DRAIN GPIOG->OTYPER |= (1 << 0);
+//#define OPEN_DRAIN GPIOG->OTYPER |= (1 << 0);
+#define	OPEN_DRAIN GPIOG->OTYPER = (GPIOG->OTYPER & ~(1 << (0))) | (GPIO_OType_OD << (0))
 
 //push-pull PG0
-#define PUSH_PULL GPIOG->OTYPER &= ~(1 << 0);
+//#define PUSH_PULL GPIOG->OTYPER &= ~(1 << 0);
+#define PUSH_PULL GPIOG->OTYPER = (GPIOG->OTYPER & ~(1 << (0))) | (GPIO_OType_PP << (0))
 
-#define DELAY(US) time = getTimeStamp(); while (1) {\
-		if ((getTimeStamp() - time) == US) {\
-			break;\
-		}\
-	}
-
+	
+extern char reset (void);
 
 #endif /* _DS18B20_H */
