@@ -19,6 +19,7 @@
 #include "TI_Lib.h"
 #include "tft.h"
 #include "DS18B20.h"
+#include "one_wire.h"
 
 //--- For GPIOs -----------------------------
 //Include instead of "stm32f4xx.h" for
