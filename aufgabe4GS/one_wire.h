@@ -2,8 +2,36 @@
 #define _ONE_WIRE_H
 #include "TI_Lib.h"
 #include "TI_memory_map.h"
+#ifdef SIMULATION
+#include "SIM_Board_IO.h"
+#else
 #include "stm32f4xx_gpio.h"
-#include <stdbbool.h>
+#endif
+#include <stdbool.h>
+
+///////////////////////////////////////////////
+typedef struct{
+	GPIO_TypeDef*  GPIOx;
+	uint16_t sensorPIN;
+	uint8_t LastDiscrepancy;
+	uint8_t LastFamilyDiscrepancy;
+	bool LastDeviceFlag;
+	uint8_t ROM_NR[8];
+} ow_t;
+
+#define OW_PORT GPIOG
+
+///////////////////////////////////////////////
+typedef struct{
+	GPIO_TypeDef*  GPIOx;
+	uint16_t GPIO_Pin;
+	uint8_t LastDiscrepancy;
+	uint8_t LastFamilyDiscrepancy;
+	uint8_t LastDeviceFlag;
+	uint8_t ROM_NO[8];
+}onewire_t;
+
+
 
 #define CMD_SEARCH_ROM		0xf0
 #define CMD_READ_ROM			0x33
@@ -40,18 +68,26 @@
 #define Rx_DS18B20 GPIOG->MODER = (GPIOG->MODER & ~(3 << (0 * 2))) | (GPIO_Mode_IN << (0 * 2))
 
 // HIGH
-#define HIGH GPIOG->BSRRL = (1 << 0);
+#define OW_HIGH GPIOG->BSRRL = (1 << 0);
 
 // LOW
-#define LOW GPIOG->BSRRH = (1 << 0);
+#define OW_LOW GPIOG->BSRRH = (1 << 0);
 
 
 //Open drain PG0
-//#define OPEN_DRAIN GPIOG->OTYPER |= (1 << 0);
-#define	OPEN_DRAIN GPIOG->OTYPER = (GPIOG->OTYPER & ~(1 << (0))) | (GPIO_OType_OD << (0))
+#define OPEN_DRAIN(PIN) GPIOG->OTYPER |= (1 << PIN);
+//#define	OPEN_DRAIN(PIN) GPIOG->OTYPER = (GPIOG->OTYPER & ~(1 << (PIN))) | (GPIO_OType_OD << (PIN))
 
 //push-pull PG0
-//#define PUSH_PULL GPIOG->OTYPER &= ~(1 << 0);
-#define PUSH_PULL GPIOG->OTYPER = (GPIOG->OTYPER & ~(1 << (0))) | (GPIO_OType_PP << (0))
+#define PUSH_PULL(PIN) GPIOG->OTYPER &= ~(1 << PIN);
+//#define PUSH_PULL(PIN) GPIOG->OTYPER = (GPIOG->OTYPER & ~(1 << (PIN))) | (GPIO_OType_PP << (PIN))
+
+
+
+extern void ow_init(ow_t * ow_struct);
+extern uint8_t ow_reset (void);
+extern void ow_write_byte (uint8_t byte);
+extern uint8_t ow_read_byte(void);
+
 
 #endif

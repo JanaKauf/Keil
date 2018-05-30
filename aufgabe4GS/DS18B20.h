@@ -4,6 +4,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+///////////////////////////////////////
+
+#define DS18B20_PIN GPIOG->IDR
+
+///////////////////////////////////////
+
 #define FAMILY_ROM	0x28
 
 typedef struct
@@ -27,3 +33,4 @@ typedef enum {
 
 
 #endif /* _DS18B20_H */
+

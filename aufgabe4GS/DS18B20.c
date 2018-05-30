@@ -1,6 +1,5 @@
 #include "DS18B20.h"
 
-
 void
 CRCwrite (uint8_t CMD) {
 
